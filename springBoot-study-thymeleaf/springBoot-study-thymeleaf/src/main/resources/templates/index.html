@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--test1-->
+<!--<p>
+年龄：<span th:text="${person.age}"></span></br>
+姓名：<span th:text="${person.name}"></span></br>
+微信公众号：<span th:text="${person.wxCode}"></span>
+</p>-->
+<!--test2-->
+<!--
+<p th:object="${person}">
+    年龄：<span th:text="*{age}"></span></br>
+    姓名：<span th:text="*{name}"></span></br>
+    微信公众号：<span th:text="*{wxCode}"></span>
+</p>-->
+<!--test3-->
+<!--<p >
+    年龄：<span th:text="*{person.age}"></span></br>
+    姓名：<span th:text="*{person.name}"></span></br>
+    微信公众号：<span th:text="*{person.wxCode}"></span>
+</p>-->
+
+<!--test4-->
+<!--<a href="personInfo.html" th:href="@{'http://localhost:8080/coderV/person/info?wxCode='+${person.wxCode}+'&name='+${person.name}}">我的微信公众号是：coldStone</a></body></br>
+<a href="personInfo.html" th:href="@{|http://localhost:8080/coderV/person/info?wxCode=${person.wxCode}&name=${person.name}|}">我的微信公众号是：coldStone</a>-->
+
+<!--test5-->
+<!--<a href="index.html" th:href="@{'person?wxCode='+${person.wxCode}}">我的微信公众号是:coldStone</a></body></br>
+<a href="index.html" th:href="@{'/person?wxCode='+${person.wxCode}}">我的微信公众号是:coldStone</a>-->
+
+
+<!--test th:action-->
+<!--<form  th:action="@{/person/info/}">......</form>
+<form  th:action="/person/info">......</form>-->
+
+<!--test th:ecch  important-->
+
+<tr th:each="person, interStat : ${personList}">
+    <td th:text="${interStat.index}"></td>
+    <td th:text="${person.age}"></td>
+    <td th:text="${person.name}"></td>
+    <td th:text="${person.wxCode}"></td>
+</tr>
+
+
+
+</body>
+</html>

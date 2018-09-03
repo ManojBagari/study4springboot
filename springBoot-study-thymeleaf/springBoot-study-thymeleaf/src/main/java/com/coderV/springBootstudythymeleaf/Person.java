@@ -3,6 +3,16 @@ package com.coderV.springBootstudythymeleaf;
 public class Person {
     private  String name;
     private  int age;
+    private String wxCode;
+
+
+    public String getWxCode() {
+        return wxCode;
+    }
+
+    public void setWxCode(String wxCode) {
+        this.wxCode = wxCode;
+    }
 
     public String getName() {
         return name;
