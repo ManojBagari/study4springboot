@@ -81,7 +81,7 @@
 <!--<span id="user">静态赋予</span>
 <span th:id="${wxCode}">动态赋予ID</span>-->
 
-<!--test th:if--> <!--我这边的1应该不用加引号，就是int 类型，最好用String类型测试-->
+<!--test th:if 我这边的1应该不用加引号，就是int 类型，最好用String类型测试-->
 <!--<span th:if="${person.sex eq 1}">
     男
 </span>
@@ -91,11 +91,23 @@
 
 
 <!--test  switch case-->
-<div th:switch="${person.sex}">
+<!--<div th:switch="${person.sex}">
     <p th:case="1">性别：男</p>
     <p th:case="2">性别：女</p>
     <p th:case="*">性别：你猜</p>
+</div>-->
 
-</div>
+
+<!--test  数字字面量-->
+<!--<p>我今年<span th:text="99+1"></span>岁</p>-->
+
+
+<!--thymeleaf 表达式对象-->
+<!--我的微信公众号：<span th:text="${#request.getAttribute('wxCode')}"></span><br>
+项目上下文：<span th:text="${#request.getContextPath()}"></span><br>
+我的名字：<span th:text="${#request.getSession().getAttribute('name')}"></span>-->
+
+<!--thymeleaf 功能对象-->
+<span th:text="${#dates.format(date,'YYYY-MM-dd HH:mm:ss')}">时间输出</span>
 </body>
 </html>

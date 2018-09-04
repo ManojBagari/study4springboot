@@ -7,10 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.*;
 
 @Controller
 public class HelloController {
@@ -58,24 +57,18 @@ public class HelloController {
     @RequestMapping(value = "/testIf")
     public String testIf(Model model){
         Person person = new Person() ;
-
-        person.setAge(22);
-        person.setName("xxx");
-        person.setWxCode("coldStone");
         person.setSex(1);
         model.addAttribute("person", person);
-
         return "index";
     }
-    public String index4(Model model){
-        Person person = new Person() ;
 
-        person.setAge(22);
-        person.setName("xxx");
-        person.setWxCode("coldStone");
 
-        model.addAttribute("person", person);
 
+    @RequestMapping(value = "/request")
+    public String request(Model model,  HttpServletRequest request){
+        request.setAttribute("wxCode","codeStone");
+        request.getSession().setAttribute("name","Tom");
+        model.addAttribute("date",new Date());
         return "index";
     }
 
