@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class HelloController {
@@ -23,7 +25,7 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/personList")
-    public String testEach(Model model){
+    public String testList(Model model){
 
         List<Person> personList = new ArrayList<>();
         for (int i = 0; i < 5 ; i++) {
@@ -36,24 +38,31 @@ public class HelloController {
         model.addAttribute("personList", personList);
         return "index";
     }
-    public String index2(Model model){
-        Person person = new Person() ;
-
-        person.setAge(22);
-        person.setName("xxx");
-        person.setWxCode("coldStone");
-
-        model.addAttribute("person", person);
+    @RequestMapping(value = "/personMap")
+    public String testMap(Model model){
+        Map<String,Object >  personMap = new HashMap<>();
+        for (int i = 0; i < 5 ; i++) {
+            Person person = new Person() ;
+            person.setAge(i);
+            person.setName(i+"xxx");
+            person.setWxCode("coldStone");
+            personMap.put(String.valueOf(i),person);
+        }
+        model.addAttribute("personMap",personMap);
+        model.addAttribute("wxCode","coldStone");
 
         return "index";
     }
-    public String index3(Model model){
+
+
+    @RequestMapping(value = "/testIf")
+    public String testIf(Model model){
         Person person = new Person() ;
 
         person.setAge(22);
         person.setName("xxx");
         person.setWxCode("coldStone");
-
+        person.setSex(1);
         model.addAttribute("person", person);
 
         return "index";

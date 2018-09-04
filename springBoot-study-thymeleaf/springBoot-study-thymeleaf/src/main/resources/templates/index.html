@@ -38,16 +38,64 @@
 <!--<form  th:action="@{/person/info/}">......</form>
 <form  th:action="/person/info">......</form>-->
 
-<!--test th:ecch  important-->
-
-<tr th:each="person, interStat : ${personList}">
-    <td th:text="${interStat.index}"></td>
+<!--test  each list  important-->
+<!--<table border="1" style="border: aliceblue">
+    <tr>
+    <th>列表索引</th>
+    <th>年龄</th>
+    <th>名称</th>
+    <th>微信公众号</th>
+    <th>当前已经遍历的个数</th>
+    <th>集合的总数目</th>
+    <th>当前遍历的对象</th>
+    </tr>
+<tr th:each="person : ${personList}">
+    <td th:text="${personStat.index}"></td>
     <td th:text="${person.age}"></td>
     <td th:text="${person.name}"></td>
     <td th:text="${person.wxCode}"></td>
+    <td th:text="${personStat.count}"></td>
+    <td th:text="${personStat.size}"></td>
+    <td th:text="${personStat.current}"></td>
 </tr>
+</table>-->
 
 
+<!--testeach map -->
+<!--<table border="1" style="border: aliceblue">
+    <tr>
+    <th>每个map元素的键</th>
+    <th>年龄</th>
+    <th>名称</th>
+    <th>微信公众号</th>
+    </tr>
+<tr th:each="person : ${personMap}">
+    <td th:text="${person.key}"></td>
+    <td th:text="${person.value.age}"></td>
+    <td th:text="${person.value.name}"></td>
+    <td th:text="${person.value.wxCode}"></td>
+</tr>
+</table>-->
 
+<!--test th:id-->
+<!--<span id="user">静态赋予</span>
+<span th:id="${wxCode}">动态赋予ID</span>-->
+
+<!--test th:if--> <!--我这边的1应该不用加引号，就是int 类型，最好用String类型测试-->
+<!--<span th:if="${person.sex eq 1}">
+    男
+</span>
+<span th:if="${person.sex eq 2}">
+    女
+</span>-->
+
+
+<!--test  switch case-->
+<div th:switch="${person.sex}">
+    <p th:case="1">性别：男</p>
+    <p th:case="2">性别：女</p>
+    <p th:case="*">性别：你猜</p>
+
+</div>
 </body>
 </html>
